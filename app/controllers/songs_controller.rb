@@ -2,6 +2,12 @@ class SongsController < ApplicationController
   require 'csv'
   include Sidekiq::Worker
 
+  def upload
+    LeadsWorker.perform_async(params[:leads].path)
+
+    redirect_to customers_path
+  end
+
   def index
     @songs = Song.all
   end
