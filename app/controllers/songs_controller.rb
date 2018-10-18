@@ -3,9 +3,9 @@ class SongsController < ApplicationController
   include Sidekiq::Worker
 
   def upload
-    LeadsWorker.perform_async(params[:leads].path)
+    LeadsWorker.perform_async(params[:songs].path)
 
-    redirect_to customers_path
+    redirect_to songs_path
   end
 
   def index
