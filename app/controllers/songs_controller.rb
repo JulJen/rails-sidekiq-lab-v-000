@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
-
+  require 'csv'
+  
   def upload
     LeadsWorker.perform_async(params[:songs].path)
     redirect_to songs_path
