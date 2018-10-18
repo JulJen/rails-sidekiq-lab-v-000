@@ -1,6 +1,5 @@
 class SongsController < ApplicationController
-  require 'csv'
-  include Sidekiq::Worker
+
 
   def upload
     LeadsWorker.perform_async(params[:songs].path)
