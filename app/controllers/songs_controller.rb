@@ -1,6 +1,5 @@
 class SongsController < ApplicationController
 
-
   def upload
     LeadsWorker.perform_async(params[:songs].path)
 
