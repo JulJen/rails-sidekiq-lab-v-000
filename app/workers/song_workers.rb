@@ -2,6 +2,8 @@ class SongsWorker
   require 'csv'
   include Sidekiq::Worker
 
+# perform instance method that takes in whatever data is required to complete the job
+# it will be our leads file
   def perform(songs_file)
     CSV.foreach(songs_file, headers: true) do |song|
       Song.create(title: song[0], artist_name: song[1])
